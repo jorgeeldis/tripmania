@@ -39,6 +39,7 @@ dependencies:
   latlong2: ^0.9.1 # Or the latest version
   http: ^1.1.0 # For API calls
   image_picker: ^1.0.0 # Use the latest version
+  shared_preferences: ^2.2.2 # For local data storage
 
 dev_dependencies:
   flutter_test:
