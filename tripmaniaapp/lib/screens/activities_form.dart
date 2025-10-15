@@ -3,6 +3,20 @@ import 'package:tripmaniaapp/main.dart';
 import 'package:flutter_datetime_picker_plus/flutter_datetime_picker_plus.dart'
     as dtp;
 
+const List<String> category = <String>[
+  'Sightseeing',
+  'Museum',
+  'Transport',
+  'City Walk',
+  'Landmark',
+  'Tour',
+  'Accommodation',
+  'Sports',
+  'Neighborhood',
+  'Food',
+  'Park',
+];
+
 void main() {
   runApp(const ActivitiesFormScreen());
 }
@@ -15,13 +29,15 @@ class ActivitiesFormScreen extends StatefulWidget {
 
 class _ActivitiesFormScreenState extends State<ActivitiesFormScreen> {
   DateTime? _selectedDate;
+
+  String dropdownValue = category.first;
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Activities Form',
       theme: lightTheme,
       darkTheme: darkTheme,
-      themeMode: ThemeMode.dark,
+      themeMode: ThemeMode.system,
       home: Scaffold(
         appBar: AppBar(
           title: const Text('Activities Form'),
@@ -52,6 +68,9 @@ class _ActivitiesFormScreenState extends State<ActivitiesFormScreen> {
                     width: double.infinity,
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(5),
+                        ),
                         backgroundColor: Theme.of(context).colorScheme.primary,
                         foregroundColor: Theme.of(
                           context,
@@ -96,7 +115,8 @@ class _ActivitiesFormScreenState extends State<ActivitiesFormScreen> {
                       child: _selectedDate == null
                           ? const Text('Select Date')
                           : Text(
-                              'Selected Date: ${_selectedDate!.month}/${_selectedDate!.day}/${_selectedDate!.year}'),
+                              'Selected Date: ${_selectedDate!.month}/${_selectedDate!.day}/${_selectedDate!.year}',
+                            ),
                     ),
                   ),
                 ),
@@ -110,8 +130,34 @@ class _ActivitiesFormScreenState extends State<ActivitiesFormScreen> {
                 Container(
                   padding: const EdgeInsets.all(10),
                   margin: const EdgeInsets.all(10),
-                  child: TextFormField(
-                    decoration: const InputDecoration(labelText: 'Category'),
+                  alignment: Alignment.centerLeft,
+                  child: SizedBox(
+                    width: double.infinity,
+                    child: DropdownButtonFormField(
+                      isExpanded: true,
+                      icon: const Icon(Icons.arrow_drop_down),
+                      elevation: 16,
+                      style: TextStyle(
+                        color: Theme.of(context).colorScheme.onSurface,
+                        fontSize: 16,
+                      ),
+                      decoration: InputDecoration(
+                        labelText: 'Category',
+                        border: OutlineInputBorder(),
+                      ),
+                      initialValue: dropdownValue,
+                      items: category.map((String value) {
+                        return DropdownMenuItem<String>(
+                          value: value,
+                          child: Text(value),
+                        );
+                      }).toList(),
+                      onChanged: (String? newValue) {
+                        setState(() {
+                          dropdownValue = newValue!;
+                        });
+                      },
+                    ),
                   ),
                 ),
                 Container(
@@ -142,6 +188,9 @@ class _ActivitiesFormScreenState extends State<ActivitiesFormScreen> {
                   margin: const EdgeInsets.all(10),
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(5),
+                      ),
                       backgroundColor: Theme.of(context).colorScheme.primary,
                       foregroundColor: Theme.of(context).colorScheme.onPrimary,
                     ),
