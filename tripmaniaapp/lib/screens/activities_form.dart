@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:tripmaniaapp/main.dart';
 import 'package:flutter_datetime_picker_plus/flutter_datetime_picker_plus.dart'
     as dtp;
 
@@ -35,8 +34,6 @@ class _ActivitiesFormScreenState extends State<ActivitiesFormScreen> {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Activities Form',
-      theme: lightTheme,
-      darkTheme: darkTheme,
       themeMode: ThemeMode.system,
       home: Scaffold(
         appBar: AppBar(

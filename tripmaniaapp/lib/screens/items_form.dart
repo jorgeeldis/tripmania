@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:tripmaniaapp/main.dart';
 
 void main() {
   runApp(const ItemsFormScreen());
@@ -12,8 +11,6 @@ class ItemsFormScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Items Form',
-      theme: lightTheme,
-      darkTheme: darkTheme,
       themeMode: ThemeMode.dark,
       home: Scaffold(
         appBar: AppBar(
@@ -25,8 +22,47 @@ class ItemsFormScreen extends StatelessWidget {
             },
           ),
         ),
-        body: const Center(
-          child: Text('Form to Add/Edit Items'),
+        body: ListView(
+          children: [
+            Container(
+              padding: const EdgeInsets.all(10),
+              margin: const EdgeInsets.all(10),
+              child: TextFormField(
+                decoration: const InputDecoration(labelText: 'Item Name'),
+              ),
+            ),
+            Container(
+              padding: const EdgeInsets.all(10),
+              margin: const EdgeInsets.all(10),
+              child: TextFormField(
+                decoration: const InputDecoration(labelText: 'Item Baggage'),
+              ),
+            ),
+            Container(
+              padding: const EdgeInsets.all(10),
+              margin: const EdgeInsets.all(10),
+              child: TextFormField(
+                decoration: const InputDecoration(labelText: 'Item Category'),
+              ),
+            ),
+            Container(
+              padding: const EdgeInsets.all(10),
+              margin: const EdgeInsets.all(10),
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(5),
+                  ),
+                  backgroundColor: Theme.of(context).colorScheme.primary,
+                  foregroundColor: Theme.of(context).colorScheme.onPrimary,
+                ),
+                onPressed: () {
+                  // Handle form submission
+                },
+                child: const Text('Submit'),
+              ),
+            ),
+          ],
         ),
       ),
     );

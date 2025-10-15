@@ -9,36 +9,6 @@ void main() {
   runApp(const MyApp());
 }
 
-final ThemeData lightTheme = ThemeData(
-  colorScheme: ColorScheme(
-    brightness: Brightness.light,
-    primary: Colors.black,
-    onPrimary: Colors.white,
-    secondary: Colors.white,
-    onSecondary: Colors.black,
-    error: Colors.red,
-    onError: Colors.white,
-    surface: Colors.white,
-    onSurface: Colors.black,
-  ),
-  useMaterial3: true,
-);
-
-final ThemeData darkTheme = ThemeData(
-  colorScheme: ColorScheme(
-    brightness: Brightness.dark,
-    primary: Colors.white,
-    onPrimary: Colors.black,
-    secondary: Colors.black,
-    onSecondary: Colors.white,
-    error: Colors.red,
-    onError: Colors.black,
-    surface: Colors.black,
-    onSurface: Colors.white,
-  ),
-  useMaterial3: true,
-);
-
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -47,8 +17,6 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Trip Mania',
-      theme: lightTheme,
-      darkTheme: darkTheme,
       themeMode: ThemeMode.system,
       home: const MyHomePage(title: 'Trip Mania Home Page'),
     );
@@ -161,7 +129,7 @@ class _MyHomePageState extends State<MyHomePage> {
         children: [
           Row(
             children: [
-              Text('Activities'),
+              Text('Add Activities'),
               SizedBox(width: 20),
               FloatingActionButton(
                 heroTag: 'activities',
@@ -178,7 +146,7 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
           Row(
             children: [
-              Text('Items'),
+              Text('Add Items'),
               SizedBox(width: 20),
               FloatingActionButton(
                 heroTag: 'items',

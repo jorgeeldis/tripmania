@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:tripmaniaapp/main.dart';
-
 void main() {
   runApp(const ActivitiesScreen());
 }
@@ -12,8 +10,6 @@ class ActivitiesScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Activities',
-      theme: lightTheme,
-      darkTheme: darkTheme,
       themeMode: ThemeMode.dark,
       home: Scaffold(
         appBar: AppBar(
