@@ -16,6 +16,14 @@ const List<String> category = <String>[
   'Park',
 ];
 
+const List<String> transportationList = <String>[
+  'Car',
+  'Bus',
+  'Train',
+  'Walking',
+  'Plane',
+];
+
 void main() {
   runApp(const ActivitiesFormScreen());
 }
@@ -30,6 +38,7 @@ class _ActivitiesFormScreenState extends State<ActivitiesFormScreen> {
   DateTime? _selectedDate;
 
   String dropdownValue = category.first;
+  String transportationValue = transportationList.first;
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -152,6 +161,39 @@ class _ActivitiesFormScreenState extends State<ActivitiesFormScreen> {
                       onChanged: (String? newValue) {
                         setState(() {
                           dropdownValue = newValue!;
+                        });
+                      },
+                    ),
+                  ),
+                ),
+                Container(
+                  padding: const EdgeInsets.all(10),
+                  margin: const EdgeInsets.all(10),
+                  alignment: Alignment.centerLeft,
+                  child: SizedBox(
+                    width: double.infinity,
+                    child: DropdownButtonFormField(
+                      isExpanded: true,
+                      icon: const Icon(Icons.arrow_drop_down),
+                      elevation: 16,
+                      style: TextStyle(
+                        color: Theme.of(context).colorScheme.onSurface,
+                        fontSize: 16,
+                      ),
+                      decoration: InputDecoration(
+                        labelText: 'Transportation',
+                        border: OutlineInputBorder(),
+                      ),
+                      initialValue: transportationValue,
+                      items: transportationList.map((String value) {
+                        return DropdownMenuItem<String>(
+                          value: value,
+                          child: Text(value),
+                        );
+                      }).toList(),
+                      onChanged: (String? newValue) {
+                        setState(() {
+                          transportationValue = newValue!;
                         });
                       },
                     ),
